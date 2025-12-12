@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vivek Kumar Kushwaha - Java Developer</title>
+    <title>Vivek Kumar Kushwaha - Java Developer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
@@ -22,31 +24,57 @@
             padding: 20px;
         }
         
+        /* Header with your photo */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
             color: white;
-            padding: 60px 0;
+            padding: 70px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
         }
         
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             border: 5px solid white;
-            margin-bottom: 20px;
-            background-color: #ddd;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
         
         h1 {
-            font-size: 2.5em;
+            font-size: 2.8em;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
         
         .tagline {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            opacity: 0.9;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
         }
         
         .contact-links {
@@ -54,78 +82,144 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
         }
         
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: white;
-            color: #667eea;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .btn:hover {
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         section {
             background: white;
             margin: 30px 0;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
         }
         
         h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
+            color: #1a2980;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #26d0ce;
+            font-size: 1.8em;
         }
         
         .project {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .project:last-child {
+            border-bottom: none;
         }
         
         .project h3 {
-            color: #333;
+            color: #1a2980;
             margin-bottom: 10px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 10px 0;
+            margin: 15px 0;
         }
         
         .tech-tag {
-            background: #e0e7ff;
-            color: #667eea;
-            padding: 5px 10px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #d1d8ff 100%);
+            color: #1a2980;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #c3cfe2;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            background: #333;
+            padding: 30px;
+            background: #1a2980;
             color: white;
             margin-top: 50px;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        footer a {
+            color: #26d0ce;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             
             section {
-                padding: 20px;
+                padding: 25px;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 90%;
+                justify-content: center;
             }
         }
     </style>
@@ -133,17 +227,21 @@
 <body>
     <header>
         <div class="container">
-            <!-- Add your photo here -->
-            <div class="profile-img"></div>
+            <!-- Your LinkedIn profile photo added -->
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQGnHp39NK5E7Q/profile-displayphoto-crop_800_800/B56Zmoo4k.I4AI-/0/1759470915658?e=1767225600&v=beta&t=ZnR0SYQ-QYbxm4vJnKEtO2peb6F0cEEm6FAOAERFTFA" 
+                 alt="Vivek Kumar Kushwaha - Java Developer"
+                 class="profile-img">
+            
             <h1>Vivek Kumar Kushwaha</h1>
             <p class="tagline">Java Full-Stack Developer | Cybersecurity Enthusiast</p>
             <p>Building secure, scalable web applications with Spring Boot & React</p>
             
             <div class="contact-links">
-                <a href="mailto:vivekkushwah0121@gmail.com" class="btn">Email Me</a>
-                <a href="https://linkedin.com/in/vivek1607" class="btn">LinkedIn</a>
-                <a href="https://github.com/Vivekkushwah0121" class="btn">GitHub</a>
-                <a href="https://hackerrank.com/profile/vivekkushwah0121" class="btn">HackerRank</a>
+                <a href="mailto:vivekkushwah0121@gmail.com" class="btn">📧 Email Me</a>
+                <a href="https://linkedin.com/in/vivek1607" class="btn">💼 LinkedIn</a>
+                <a href="https://github.com/Vivekkushwah0121" class="btn">🐱 GitHub</a>
+                <a href="https://hackerrank.com/profile/vivekkushwah0121" class="btn">⚡ HackerRank</a>
+                <a href="Vivek_Java_dev_intern.pdf" class="btn" download>📄 Download Resume</a>
             </div>
         </div>
     </header>
@@ -152,7 +250,7 @@
         <section id="about">
             <h2>About Me</h2>
             <p>MCA graduate with cybersecurity internship experience, skilled in Java, Spring Boot, and React.js. Passionate about building secure, scalable web applications using modern technologies.</p>
-            <p>Always eager to learn new technologies and solve challenging problems.</p>
+            <p>Always eager to learn new technologies and solve challenging problems. Currently seeking software development roles to contribute to innovative projects.</p>
         </section>
         
         <section id="projects">
@@ -166,12 +264,14 @@
                     <span class="tech-tag">JWT</span>
                     <span class="tech-tag">REST APIs</span>
                     <span class="tech-tag">Lombok</span>
+                    <span class="tech-tag">MongoDB Atlas</span>
                 </div>
                 <p>Secure journaling app with JWT authentication & MongoDB Atlas cloud database.</p>
                 <ul>
                     <li>✅ Optimized CRUD operations reducing response time by 30%</li>
                     <li>✅ Reduced boilerplate code by 40% using Lombok</li>
-                    <li>✅ Implemented security best practices</li>
+                    <li>✅ Implemented security best practices from cybersecurity experience</li>
+                    <li>✅ Cloud-hosted on MongoDB Atlas with automatic backups</li>
                 </ul>
             </div>
             
@@ -182,11 +282,14 @@
                     <span class="tech-tag">HTML5</span>
                     <span class="tech-tag">CSS3</span>
                     <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">CRUD Operations</span>
                 </div>
-                <p>Full-stack system handling 500+ records with CRUD operations.</p>
+                <p>Full-stack system handling 500+ records with complete CRUD operations.</p>
                 <ul>
                     <li>✅ Improved data accuracy by 95% with client-side validation</li>
                     <li>✅ Responsive UI supporting multiple devices</li>
+                    <li>✅ Efficient database design for quick data retrieval</li>
+                    <li>✅ Clean, user-friendly interface</li>
                 </ul>
             </div>
             
@@ -197,12 +300,14 @@
                     <span class="tech-tag">HTML5</span>
                     <span class="tech-tag">CSS3</span>
                     <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">Agile</span>
+                    <span class="tech-tag">Agile Methodology</span>
                 </div>
-                <p>Managed 1000+ student records with database operations.</p>
+                <p>Managed 1000+ student records with efficient database operations.</p>
                 <ul>
-                    <li>✅ Applied Agile methodology for development lifecycle</li>
-                    <li>✅ Efficient handling of large datasets</li>
+                    <li>✅ Applied Agile methodology for complete development lifecycle</li>
+                    <li>✅ Efficient handling of large datasets with optimized queries</li>
+                    <li>✅ Role-based access control for different users</li>
+                    <li>✅ Comprehensive reporting features</li>
                 </ul>
             </div>
         </section>
@@ -219,27 +324,51 @@
                 <span class="tech-tag">MongoDB</span>
                 <span class="tech-tag">MySQL</span>
                 <span class="tech-tag">REST APIs</span>
-                <span class="tech-tag">JWT</span>
-                <span class="tech-tag">Git</span>
+                <span class="tech-tag">JWT Authentication</span>
+                <span class="tech-tag">Git & GitHub</span>
                 <span class="tech-tag">Cybersecurity</span>
+                <span class="tech-tag">Penetration Testing</span>
+                <span class="tech-tag">Lombok</span>
+                <span class="tech-tag">Maven</span>
+                <span class="tech-tag">Agile Methodology</span>
             </div>
         </section>
         
         <section id="certifications">
             <h2>Certifications & Achievements</h2>
             <ul>
-                <li>Spring Boot Fundamentals - Udemy (2025)</li>
-                <li>MongoDB Basics - MongoDB University (2025)</li>
-                <li>Cybersecurity Essentials - CISCO (2023)</li>
-                <li>First Position in Ideathon 2023 - Outperformed 50+ participants</li>
+                <li><strong>Spring Boot Fundamentals</strong> - Udemy (2025) — REST APIs, Security</li>
+                <li><strong>MongoDB Basics</strong> - MongoDB University (August 2025)</li>
+                <li><strong>Introduction to Cyber Security</strong> - CISCO Networking Academy (April-June 2023)</li>
+                <li><strong>Cyber Security Essentials</strong> - CISCO Networking Academy (April-June 2023)</li>
+                <li><strong>First Position in Ideathon 2023</strong> - Outperformed 50+ participants</li>
+                <li><strong>Completed 5+ Technical Certifications</strong> in programming and cybersecurity</li>
             </ul>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            <div class="project">
+                <h3>🎓 PG-DAC (Advanced Computing)</h3>
+                <p><strong>CDAC Bangalore</strong> | Bangalore, India | Feb 2025 - Aug 2025</p>
+            </div>
+            <div class="project">
+                <h3>🎓 Master of Computer Applications (MCA)</h3>
+                <p><strong>KIET Group of Institutions — AKTU</strong> | Delhi NCR, India | 2022 - 2024</p>
+            </div>
+            <div class="project">
+                <h3>🎓 Bachelor of Science (B.Sc)</h3>
+                <p><strong>D.N. College Merritt — CCSU</strong> | Meerut, India | 2018 - 2021 | 65%</p>
+            </div>
         </section>
     </div>
     
     <footer>
         <p>© 2024 Vivek Kumar Kushwaha. All rights reserved.</p>
         <p>📧 vivekkushwah0121@gmail.com | 📱 +91 7017312355</p>
-        <p>Visit my <a href="https://github.com/Vivekkushwah0121" style="color: #fff;">GitHub</a> for more projects</p>
+        <p>📍 Bangalore, India</p>
+        <p>Visit my <a href="https://github.com/Vivekkushwah0121">GitHub</a> for more projects</p>
+        <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9em;">Portfolio last updated: December 2024</p>
     </footer>
 </body>
 </html>
